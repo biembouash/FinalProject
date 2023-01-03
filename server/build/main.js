@@ -15,7 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const blog_1 = __importDefault(require("./routes/blog"));
 const connect_1 = __importDefault(require("./db/connect"));
+const cors = require('cors');
 const app = (0, express_1.default)();
+app.use(cors({
+    origin: 'http://localhost:3000',
+}));
 app.use(express_1.default.json());
 app.use('/api/blog', blog_1.default);
 function start() {
