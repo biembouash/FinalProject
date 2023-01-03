@@ -12,21 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const blog_1 = __importDefault(require("./routes/blog"));
-const connect_1 = __importDefault(require("./db/connect"));
-const app = (0, express_1.default)();
-app.use(express_1.default.json());
-app.use('/api/blog', blog_1.default);
-function start() {
+const mongoose_1 = __importDefault(require("mongoose"));
+const connect = "mongodb://127.0.0.1:27017";
+function connectDB() {
     return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield (0, connect_1.default)();
-            app.listen(8080, () => { console.log("server is listening on port 8080..."); });
-        }
-        catch (error) {
-            console.log(error);
-        }
+        mongoose_1.default.connect(connect);
     });
 }
-start();
+exports.default = connectDB;
