@@ -2,11 +2,12 @@ import axios, {AxiosResponse} from "axios"
 import { serverInfo } from "./server"
 
 export interface IBlog{
-    author:String,
-    title:String,
-    content:String,
-    created_at:String,
-    updated_at:String
+    __id?: string,
+    author:string,
+    title:string,
+    content:string,
+    created_at:string,
+    updated_at:string
 }
 
 export class Worker{

@@ -1,15 +1,11 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { IBlog } from '../blog';
 
-interface BlogProps{
-    author: string,
-    title: string,
-    content: string,
-    created_at: string
-}
 
-export default function Blog(props: BlogProps){
+
+export default function Blog(props: IBlog){
     return (
         <Card className="text-center">
           <Card.Header>{props.author}</Card.Header>
