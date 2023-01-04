@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import '../css/App.css';
 import Header from './Header';
-import Blog from './Blog';
 import createState from '../state';
-import ListGroup from 'react-bootstrap/ListGroup';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { IBlog } from '../blog';
+
+import BlogList from '../views/BlogList';
+import PostBlog from '../views/PostBlog';
+import Login from '../views/Login';
+import Register from '../views/Register';
 
 class App extends Component {
   state = createState(this);
@@ -15,12 +18,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header state={this.state} />
-        <ListGroup variant="flush">
-        {this.state.blogs.map((value: IBlog) => {return <ListGroup.Item key={value.__id}>
-        <Blog 
-        author={value.author} title={value.title} content={value.author} created_at={value.created_at} updated_at={value.updated_at} />
-        </ListGroup.Item>})}
-        </ListGroup>
+        {this.state.currentview === "BlogList" && <BlogList state={this.state} />}
+        {this.state.currentview === "PostBlog" && <PostBlog state={this.state} />}
+        {this.state.currentview === "Login" && <Login state={this.state} />}
+        {this.state.currentview === "Register" && <Register state={this.state} />}
       </div>
     );
   }
