@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const blog_1 = __importDefault(require("./routes/blog"));
+const user_1 = __importDefault(require("./routes/user"));
 const connect_1 = __importDefault(require("./db/connect"));
 const cors = require('cors');
 const app = (0, express_1.default)();
@@ -22,6 +23,7 @@ app.use(cors({
 }));
 app.use(express_1.default.json());
 app.use('/api/blog', blog_1.default);
+app.use('/api/user', user_1.default);
 function start() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

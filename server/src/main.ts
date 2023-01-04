@@ -1,6 +1,7 @@
 import express, {Express, Request, Response,NextFunction} from 'express'
 import path from 'path';
 import BlogRouter from './routes/blog';
+import UserRouter from './routes/user';
 import connectDB from './db/connect';
 const cors = require('cors')
 const app: Express = express();
@@ -9,6 +10,7 @@ app.use(cors({
 }))
 app.use(express.json());
 app.use('/api/blog', BlogRouter)
+app.use('/api/user', UserRouter)
 
 
 async function start(){
