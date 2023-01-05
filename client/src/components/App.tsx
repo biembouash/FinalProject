@@ -9,12 +9,14 @@ import BlogList from '../views/BlogList';
 import PostBlog from '../views/PostBlog';
 import Login from '../views/Login';
 import Register from '../views/Register';
+import UpdateBlog from '../views/UpdateBlog';
 
 class App extends Component {
   state = createState(this);
 
   render(){
     this.state.listBlogs();
+    //console.log(this.state.blogs)
     return (
       <div className="App">
         <Header state={this.state} />
@@ -22,6 +24,7 @@ class App extends Component {
         {this.state.currentview === "PostBlog" && <PostBlog state={this.state} />}
         {this.state.currentview === "Login" && <Login state={this.state} />}
         {this.state.currentview === "Register" && <Register state={this.state} />}
+        {this.state.currentview === "UpdateBlog" && <UpdateBlog state={this.state} />}
       </div>
     );
   }

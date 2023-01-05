@@ -19,4 +19,15 @@ export class Worker{
         const response: AxiosResponse = await axios.post(`${serverInfo.Server}/api/user`, user)
         return response.data;
     }
+
+    public async findUser(email: string){
+       try{
+        const users = await this.listUsers();
+        const data = users.filter((value) => {return value.email === email});
+        return data[0];
+
+       }catch(error){
+        console.log(error)
+        }
+    }
 }

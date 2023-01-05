@@ -4,8 +4,8 @@ const BlogSchema = new mongoose.Schema({
     author:String,
     title:String,
     content:String,
-    created_at:String,
-    updated_at:String,
+    created_at:Date,
+    updated_at:Date,
 })
 
 export default mongoose.model('Blog', BlogSchema);

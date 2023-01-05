@@ -9,4 +9,6 @@ const blogWorker = new Blog_1.default();
 const BlogRouter = express_1.default.Router();
 BlogRouter.get('/', blogWorker.getBlogs);
 BlogRouter.post('/', blogWorker.postBlog);
+BlogRouter.patch('/:id', blogWorker.updateBlog);
+BlogRouter.get('/:id', blogWorker.getBlog);
 exports.default = BlogRouter;

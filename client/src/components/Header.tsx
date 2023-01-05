@@ -6,6 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Header(props: any){
+    const handleLogout = () =>{
+      props.state.logoutUser();
+      props.state.showBlogList();
+      alert("Logged out")
+    }
     return (
         <>
           <Navbar bg="dark" variant="dark">
@@ -13,8 +18,9 @@ export default function Header(props: any){
               <Navbar.Brand href="#home">Welcome {props.state.user.name}</Navbar.Brand>
               <Nav className="me-auto">
                 <Nav.Link onClick={() => props.state.showBlogList()}>Home</Nav.Link>
-                <Nav.Link onClick={() => props.state.showLogin()}>Login</Nav.Link>
-                <Nav.Link onClick={() => props.state.showRegister()}>Register</Nav.Link>
+                {!props.state.logged && <Nav.Link onClick={() => props.state.showLogin()}>Login</Nav.Link>}
+                {!props.state.logged && <Nav.Link onClick={() => props.state.showRegister()}>Register</Nav.Link>}
+                {props.state.logged && <Nav.Link onClick={handleLogout}>Logout</Nav.Link>}
                 {props.state.logged && <Nav.Link onClick={() => props.state.showPostBlog()} >Post Blog</Nav.Link>}
               </Nav>
             </Container>

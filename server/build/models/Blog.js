@@ -8,7 +8,7 @@ const BlogSchema = new mongoose_1.default.Schema({
     author: String,
     title: String,
     content: String,
-    created_at: String,
-    updated_at: String,
+    created_at: Date,
+    updated_at: Date,
 });
 exports.default = mongoose_1.default.model('Blog', BlogSchema);

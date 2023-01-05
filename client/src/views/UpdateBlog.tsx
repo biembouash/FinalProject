@@ -3,34 +3,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 
-function PostBlog(props: any) {
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
+function UpdateBlog(props: any) {
+    const [content, setContent] = useState(props.state.updateContent)
     
-    const handleTitle = (event) => {
-        setTitle(event.target.value);
-    }
-
     const handleContent = (event) => {
         setContent(event.target.value);
     }
 
     const handleSubmit = async (event) =>{
         event.preventDefault();
-        await props.state.postBlog(title,content);
+        await props.state.updateBlog(content)
         props.state.showBlogList();
     }
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Title</Form.Label>
-        <Form.Control 
-        type="text" 
-        placeholder="My Love for DAW" 
-        value={title}
-        onChange={handleTitle}
-        />
-      </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Content</Form.Label>
         <Form.Control 
@@ -45,4 +31,4 @@ function PostBlog(props: any) {
   );
 }
 
-export default PostBlog;
+export default UpdateBlog;
