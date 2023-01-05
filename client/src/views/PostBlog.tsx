@@ -19,6 +19,7 @@ function PostBlog(props: any) {
         event.preventDefault();
         await props.state.postBlog(title,content);
         props.state.showBlogList();
+        alert("Blog Posted with Sucess")
     }
   return (
     <Form onSubmit={handleSubmit}>

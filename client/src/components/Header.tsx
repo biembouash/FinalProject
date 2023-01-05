@@ -15,7 +15,7 @@ export default function Header(props: any){
         <>
           <Navbar bg="dark" variant="dark">
             <Container>
-              <Navbar.Brand href="#home">Welcome {props.state.user.name}</Navbar.Brand>
+              <Navbar.Brand>Welcome {props.state.user.name}</Navbar.Brand>
               <Nav className="me-auto">
                 <Nav.Link onClick={() => props.state.showBlogList()}>Home</Nav.Link>
                 {!props.state.logged && <Nav.Link onClick={() => props.state.showLogin()}>Login</Nav.Link>}

@@ -26,7 +26,7 @@ function UpdateBlog(props: any) {
         onChange={handleContent}
         />
       </Form.Group>
-      <Button type="submit"> Post </Button>
+      <Button type="submit"> Update Post </Button>
     </Form>
   );
 }

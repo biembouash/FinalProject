@@ -27,7 +27,7 @@ function Register(props: any) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await props.state.createUser(name,email,password);
+    await props.state.createUser(name.trim(),email.trim(),password);
     props.state.showBlogList();
     alert("New user registred with sucess, you may now login.")
    
