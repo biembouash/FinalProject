@@ -15,9 +15,9 @@ function PostBlog(props: any) {
         setContent(event.target.value);
     }
 
-    const handleSubmit = (event) =>{
+    const handleSubmit = async (event) =>{
         console.log("aoduwhaowidhaowidhaowidhawoudhawodhao")
-        props.state.postBlog(title,content);
+        await props.state.postBlog(title,content);
         props.state.showBlogList();
     }
   return (

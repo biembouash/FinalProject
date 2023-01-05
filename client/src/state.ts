@@ -1,4 +1,5 @@
 import * as Blog from "./blog";
+import * as User from "./user"
 
 
 export default function createState(inParent: any){
@@ -57,5 +58,15 @@ export default function createState(inParent: any){
             // this.setState({blogs: blog_posts})
 
         }.bind(inParent),
+
+        createUser: async function(name: string, email: string, password: string) {
+            const userWorker: User.Worker = new User.Worker();
+            const user : User.IUser = {
+                name: name,
+                email: email,
+                password: password
+            }
+            const data: User.IUser = await userWorker.createUser(user);
+        }
     }
 }
