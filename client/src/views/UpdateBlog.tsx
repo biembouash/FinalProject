@@ -10,8 +10,17 @@ function UpdateBlog(props: any) {
         setContent(event.target.value);
     }
 
+    const validSubmit = () =>{
+      if(content == ''){
+        alert("Content cannot be empty")
+        return false
+      }
+      return true
+    }
+
     const handleSubmit = async (event) =>{
         event.preventDefault();
+        if(!validSubmit()) return
         await props.state.updateBlog(content)
         props.state.showBlogList();
     }

@@ -9,6 +9,51 @@ function Register(props: any) {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('')
 
+
+  const existedUser = async()=>{
+    const users = await props.state.listOfUsers();
+    return users.filter((value) => {return name === value.name}).length === 0
+
+  }
+
+  const existedEmail = async() =>{
+    const users = await props.state.listOfUsers();
+    return users.filter((value) => {return email === value.email}).length === 0
+  }
+
+  const validEmail = () => {
+      const regExpr = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)/
+      return email.trim().match(regExpr)
+   }
+  
+  const validPassword = ()=>{
+      return password === passwordConfirm
+    }
+  
+  const validForm = async () =>{
+    if(name === '' || email === '' || password === '' || passwordConfirm === ''){
+      alert("Please, Fill out all the forms")
+      return false
+    }
+    if(!validEmail()){
+      alert("Invalid email format")
+      return false
+    }
+    if(!validPassword()){
+      alert("Passwords dont match!")
+      return false
+    }
+    if(!(await existedUser())){
+      alert("Username already Exists!")
+      return false;
+    }
+    if(!(await existedEmail())){
+      alert("Email already existis!")
+      return false
+    }
+    return true
+  }
+
   const handleName =  (event) =>{
     setName(event.target.value)
   }
@@ -27,6 +72,7 @@ function Register(props: any) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if(!(await validForm())) return
     await props.state.createUser(name.trim(),email.trim(),password);
     props.state.showBlogList();
     alert("New user registred with sucess, you may now login.")

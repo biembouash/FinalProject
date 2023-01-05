@@ -93,5 +93,11 @@ export default function createState(inParent: any){
         logoutUser: async function(){
             this.setState({user: {name: 'Guest', email: '', password :''}, logged: false})
         }.bind(inParent),
+
+        listOfUsers: async function(){
+            const userWorker: User.Worker = new User.Worker();
+            const data: User.IUser[] = await userWorker.listUsers();
+            return data
+        }
     }
 }

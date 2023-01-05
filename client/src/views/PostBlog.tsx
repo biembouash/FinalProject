@@ -15,8 +15,16 @@ function PostBlog(props: any) {
         setContent(event.target.value);
     }
 
+    const validSubmit = ()=> {
+      if(title === '' || content == ''){
+        alert("Title or content cant be empty!")
+        return false;
+      }
+      return true
+    }
     const handleSubmit = async (event) =>{
         event.preventDefault();
+        if(!validSubmit()) return
         await props.state.postBlog(title,content);
         props.state.showBlogList();
         alert("Blog Posted with Sucess")
