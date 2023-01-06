@@ -13,32 +13,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Blog_1 = __importDefault(require("../models/Blog"));
+const AsyncWrapper_1 = __importDefault(require("../middleware/AsyncWrapper"));
 class BlogWorker {
-    postBlog(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
+    constructor() {
+        this.postBlog = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const data = yield Blog_1.default.create(req.body);
             res.json(data);
-        });
-    }
-    getBlogs(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
+        }));
+        this.getBlogs = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const data = yield Blog_1.default.find({}).sort({ updated_at: -1 });
             res.json(data);
-        });
-    }
-    updateBlog(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
+        }));
+        this.updateBlog = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const taskID = req.params.id;
             const data = yield Blog_1.default.findOneAndUpdate({ _id: taskID }, req.body, { new: true });
             res.json(data);
-        });
-    }
-    getBlog(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
+        }));
+        this.getBlog = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const taskID = req.params.id;
             const data = yield Blog_1.default.findOne({ _id: taskID }, req.body);
             res.json(data);
-        });
+        }));
     }
 }
 exports.default = BlogWorker;

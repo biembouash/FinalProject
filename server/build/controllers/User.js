@@ -13,18 +13,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const User_1 = __importDefault(require("../models/User"));
+const AsyncWrapper_1 = __importDefault(require("../middleware/AsyncWrapper"));
 class UserWorker {
-    getUsers(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
+    constructor() {
+        this.getUsers = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const data = yield User_1.default.find({});
             return res.json(data);
-        });
-    }
-    createUser(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
+        }));
+        this.createUser = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const data = yield User_1.default.create(req.body);
             return res.json(data);
-        });
+        }));
     }
 }
 exports.default = UserWorker;
