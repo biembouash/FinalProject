@@ -13,7 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const connect = "mongodb://127.0.0.1:27017";
+const connect = "mongodb://127.0.0.1:27017"; // The DB server adress
+//The DB connection function
 function connectDB() {
     return __awaiter(this, void 0, void 0, function* () {
         mongoose_1.default.connect(connect);
