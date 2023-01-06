@@ -9,6 +9,7 @@ import PostBlog from '../views/PostBlog';
 import Login from '../views/Login';
 import Register from '../views/Register';
 import UpdateBlog from '../views/UpdateBlog';
+import '../css/myStyle.css'
 
 class App extends Component {
   state = createState(this);

@@ -61,6 +61,7 @@ function Login(props: any) {
   }
   
   return (
+      <div className="wrapper2">
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -88,6 +89,7 @@ function Login(props: any) {
         Submit
       </Button>
     </Form>
+      </div>
   );
 }
 
