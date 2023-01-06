@@ -30,6 +30,7 @@ function PostBlog(props: any) {
         alert("Blog Posted with Sucess")
     }
   return (
+      <div className="wrapper">
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Title</Form.Label>
@@ -51,6 +52,7 @@ function PostBlog(props: any) {
       </Form.Group>
       <Button type="submit"> Post </Button>
     </Form>
+      </div>
   );
 }
 

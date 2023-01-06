@@ -28,6 +28,7 @@ function UpdateBlog(props: any) {
         props.state.showBlogList();
     }
   return (
+      <div className="wrapper">
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Content</Form.Label>
@@ -40,6 +41,7 @@ function UpdateBlog(props: any) {
       </Form.Group>
       <Button type="submit"> Update Post </Button>
     </Form>
+      </div>
   );
 }
 
