@@ -26,9 +26,9 @@ export class Worker{
         }
     }
     /**
-     * 
-     * @param blog 
-     * @returns 
+     * Post a blog into the database
+     * @param blog the informations about the blog
+     * @returns the new blog data
      */
     public async postBlog(blog: IBlog){
         try{
@@ -38,7 +38,11 @@ export class Worker{
             console.log(error)
         }
     }
-
+    /**
+     * Gets a specific blog from database
+     * @param id The blogs id
+     * @returns the blog data
+     */
     public async getBlog(id: string){
         try{
         const response: AxiosResponse = await axios.get(`${serverInfo.Server}/api/blog/${id}`)
@@ -47,7 +51,12 @@ export class Worker{
             console.log(error)
         }
     }
-
+    /**
+     * Updates a existing blog 
+     * @param id The id of the blog
+     * @param content The new content of the blog
+     * @returns the updated blog data
+     */
     public async updateBlog(id: string, content: string){
         try{
             console.log(`${serverInfo.Server}/api/blog/${id}`)
