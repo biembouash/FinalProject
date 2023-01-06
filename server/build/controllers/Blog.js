@@ -14,21 +14,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Blog_1 = __importDefault(require("../models/Blog"));
 const AsyncWrapper_1 = __importDefault(require("../middleware/AsyncWrapper"));
+//The user Worker who will make all blog DB operations
 class BlogWorker {
     constructor() {
+        //creates a blog into the database
         this.postBlog = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const data = yield Blog_1.default.create(req.body);
             res.json(data);
         }));
+        //gets all the blogs from the db
         this.getBlogs = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const data = yield Blog_1.default.find({}).sort({ updated_at: -1 });
             res.json(data);
         }));
+        //updates a specific blog in the db
         this.updateBlog = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const taskID = req.params.id;
             const data = yield Blog_1.default.findOneAndUpdate({ _id: taskID }, req.body, { new: true });
             res.json(data);
         }));
+        //gets a specific blog in the db
         this.getBlog = (0, AsyncWrapper_1.default)((req, res) => __awaiter(this, void 0, void 0, function* () {
             const taskID = req.params.id;
             const data = yield Blog_1.default.findOne({ _id: taskID }, req.body);

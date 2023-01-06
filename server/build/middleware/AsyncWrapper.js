@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+//An asyncronous Wrapper, so we dont have to use try and catch in every database operation.
 const asyncWrapper = (fn) => {
     return (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         try {
