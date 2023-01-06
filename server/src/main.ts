@@ -6,18 +6,21 @@ import connectDB from './db/connect';
 import errorHandler from './middleware/errorHandler';
 const cors = require('cors')
 const app: Express = express();
-//Allow acess from other origin, in our case its 'http://localhost:8080', the client ip.
+
+//Allow acess from other origin, in this case its 'http://localhost:8080'
 app.use(cors({
-    origin: 'http://localhost:8080',
+    origin: 'http://localhost:8080', //In case we start the client in develpment mode with "npm start"
 }))
 //Recognize request objects as json.
 app.use(express.json());
+app.use("/", express.static(path.join(__dirname, "../../clientII/dist")))
 //Use the blog router for the endpoint '/api/blog'
 app.use('/api/blog', BlogRouter)
 //Use the user router for the endpoint '/api/user'
 app.use('/api/user', UserRouter)
 //Use a custom error handler middleware
 app.use(errorHandler)
+
 
 //Starts the server
 async function start(){

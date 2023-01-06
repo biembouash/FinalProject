@@ -13,18 +13,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
 const blog_1 = __importDefault(require("./routes/blog"));
 const user_1 = __importDefault(require("./routes/user"));
 const connect_1 = __importDefault(require("./db/connect"));
 const errorHandler_1 = __importDefault(require("./middleware/errorHandler"));
 const cors = require('cors');
 const app = (0, express_1.default)();
-//Allow acess from other origin, in our case its 'http://localhost:8080', the client ip.
+//Allow acess from other origin, in this case its 'http://localhost:8080'
 app.use(cors({
-    origin: 'http://localhost:8080',
+    origin: 'http://localhost:8080', //In case we start the client in develpment mode with "npm start"
 }));
 //Recognize request objects as json.
 app.use(express_1.default.json());
+app.use("/", express_1.default.static(path_1.default.join(__dirname, "../../clientII/dist")));
 //Use the blog router for the endpoint '/api/blog'
 app.use('/api/blog', blog_1.default);
 //Use the user router for the endpoint '/api/user'
