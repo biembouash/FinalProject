@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Header(props: any){
+  //Logout Handler
     const handleLogout = () =>{
       props.state.logoutUser();
       props.state.showBlogList();

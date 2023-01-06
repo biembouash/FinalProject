@@ -12,6 +12,10 @@ import UpdateBlog from '../views/UpdateBlog';
 import '../css/myStyle.css'
 
 class App extends Component {
+  /**
+   * State data for the app.  This also includes all mutator functions for manipulating state.  That way, we only
+   * ever have to pass this entire object down through props.
+   */
   state = createState(this);
 
   render(){

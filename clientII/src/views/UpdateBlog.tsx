@@ -2,14 +2,17 @@ import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
-
+/**
+ * The view for updating a blog
+ */
 function UpdateBlog(props: any) {
+  //Creates a state variable ,and its setter, and initializes it with the value in state.updateContent
     const [content, setContent] = useState(props.state.updateContent)
-    
+    //Handler to set the new content value
     const handleContent = (event) => {
         setContent(event.target.value);
     }
-
+    //Checks if the updated content is valid
     const validSubmit = () =>{
       if(content == ''){
         alert("Content cannot be empty")
@@ -17,9 +20,9 @@ function UpdateBlog(props: any) {
       }
       return true
     }
-
+    //Submition handler
     const handleSubmit = async (event) =>{
-        event.preventDefault();
+        event.preventDefault();//Prevents the browser to reload on submition
         if(!validSubmit()) return
         await props.state.updateBlog(content)
         props.state.showBlogList();
