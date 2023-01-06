@@ -12,6 +12,7 @@ export default function Header(props: any){
       props.state.showBlogList();
       alert("Logged out")
     }
+    //The header component
     return (
         <>
           <Navbar bg="dark" variant="dark">

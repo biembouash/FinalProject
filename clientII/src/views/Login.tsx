@@ -60,7 +60,7 @@ function Login(props: any) {
     alert("Logged in with Sucess")
     
   }
-  
+  //The login view
   return (
       <div className="wrapper2">
     <Form onSubmit={handleSubmit}>

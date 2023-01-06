@@ -5,7 +5,7 @@ import '../css/myStyle.css'
 import { IBlog } from '../blog';
 
 
-
+//The blog component
 export default function Blog(props: any){
     return (
         <div className="wrapper">

@@ -81,6 +81,7 @@ function Register(props: any) {
    
 
   }
+  //Register view
   return (
       <div className="wrapper2">
     <Form onSubmit={handleSubmit}>

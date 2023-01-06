@@ -4,17 +4,19 @@ import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 
 function PostBlog(props: any) {
+  //creation of states variables and its setters, initilizes every state variable with ''
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     
+     //Handler to set the new title value
     const handleTitle = (event) => {
         setTitle(event.target.value);
     }
-
+     //Handler to set the new content value
     const handleContent = (event) => {
         setContent(event.target.value);
     }
-
+    //Checks if the submition is valid
     const validSubmit = ()=> {
       if(title === '' || content == ''){
         alert("Title or content cant be empty!")
@@ -22,15 +24,16 @@ function PostBlog(props: any) {
       }
       return true
     }
+    //Submition handler
     const handleSubmit = async (event) =>{
-        event.preventDefault();
+        event.preventDefault();//Prevents the browser to reload on submition
         if(!validSubmit()) return
         await props.state.postBlog(title,content);
         props.state.showBlogList();
         alert("Blog Posted with Sucess")
     }
+    //The view of posting a blog
   return (
-      <div className="wrapper">
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Title</Form.Label>
@@ -52,7 +55,6 @@ function PostBlog(props: any) {
       </Form.Group>
       <Button type="submit"> Post </Button>
     </Form>
-      </div>
   );
 }
 

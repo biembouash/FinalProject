@@ -29,4 +29,4 @@ async function start(){
     }
 }
 
-start()
+start()// starts the app

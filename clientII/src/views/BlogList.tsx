@@ -2,7 +2,7 @@ import React from 'react'
 import { ListGroup } from 'react-bootstrap';
 import { IBlog } from '../blog';
 import Blog from '../components/Blog';
-
+//The List of blogs view
 function BlogList(props: any){
     return (
       <div className="BlogList">

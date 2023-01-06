@@ -27,6 +27,7 @@ function UpdateBlog(props: any) {
         await props.state.updateBlog(content)
         props.state.showBlogList();
     }
+    //The view of updating a blog
   return (
       <div className="wrapper">
     <Form onSubmit={handleSubmit}>
